@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-proyectos',
@@ -20,28 +20,51 @@ export class ProyectosComponent {
     'assets/pro/gorilla/16.jpg'
   ];
   jojo: string[] = [
-    'assets/pro/jojo/1.jpg', 'assets/pro/jojo/2.jpg', 'assets/pro/jojo/3.jpg', 'assets/pro/jojo/4.jpg', 'assets/pro/jojo/5.jpg',
-    'assets/pro/jojo/6.jpg', 'assets/pro/jojo/7.jpg', 'assets/pro/jojo/8.jpg', 'assets/pro/jojo/9.jpg', 'assets/pro/jojo/10.jpg',
-    'assets/pro/jojo/11.jpg', 'assets/pro/jojo/12.jpg', 'assets/pro/jojo/13.jpg', 'assets/pro/jojo/14.jpg', 'assets/pro/jojo/15.jpg',
-    'assets/pro/jojo/16.jpg', 'assets/pro/jojo/17.jpg'
+    'assets/pro/jojo/1.png', 'assets/pro/jojo/2.png', 'assets/pro/jojo/3.png', 'assets/pro/jojo/4.png', 'assets/pro/jojo/5.png',
+    'assets/pro/jojo/6.png', 'assets/pro/jojo/7.png', 'assets/pro/jojo/8.png', 'assets/pro/jojo/8.png', 'assets/pro/jojo/9.png'
   ];
   ps: string[] = [
     'assets/pro/ps/1.jpg', 'assets/pro/ps/2.jpg', 'assets/pro/ps/3.jpg', 'assets/pro/ps/4.jpg', 'assets/pro/ps/5.jpg',
     'assets/pro/ps/6.jpg', 'assets/pro/ps/7.jpg', 'assets/pro/ps/8.jpg', 'assets/pro/ps/9.jpg', 'assets/pro/ps/10.jpg',
     'assets/pro/ps/11.jpg', 'assets/pro/ps/12.jpg', 'assets/pro/ps/13.jpg', 'assets/pro/ps/14.jpg'
   ];
+  bin: string[] = [
+    'assets/pro/bin/1.png', 'assets/pro/bin/2.png', 'assets/pro/bin/3.png', 'assets/pro/bin/4.png', 'assets/pro/bin/5.png',
+    'assets/pro/bin/6.png', 'assets/pro/bin/7.png', 'assets/pro/bin/8.png'
+  ];
 
-  logoIndex = 0;
-  retroIndex = 0;
-  gorillaIndex = 0;
-  jojoIndex = 0;
-  psIndex = 0;
-  
-  nextImage(indexRef: 'logoIndex' | 'retroIndex' | 'gorillaIndex' | 'jojoIndex' | 'psIndex', images: string[]) {
-    this[indexRef] = (this[indexRef] + 1) % images.length;
+  //lightbox
+  isLightboxOpen = false;
+  activeArray: string[] = [];
+  activeIndex = 0;
+
+  //abrir modal
+  openLightbox(images: string[], index: number) {
+    this.activeArray = images;
+    this.activeIndex = index;
+    this.isLightboxOpen = true;
+    document.body.style.overflow = 'hidden'; 
   }
 
-  prevImage(indexRef: 'logoIndex' | 'retroIndex' | 'gorillaIndex' | 'jojoIndex' | 'psIndex', images: string[]) {
-    this[indexRef] = (this[indexRef] - 1 + images.length) % images.length;
+  closeLightbox() {
+    this.isLightboxOpen = false;
+    document.body.style.overflow = ''; 
+  }
+
+  nextLightbox() {
+    this.activeIndex = (this.activeIndex + 1) % this.activeArray.length;
+  }
+
+  prevLightbox() {
+    this.activeIndex = (this.activeIndex - 1 + this.activeArray.length) % this.activeArray.length;
+  }
+
+  //teclado
+  @HostListener('document:keydown', ['$event'])
+  handleKeyboard(event: KeyboardEvent) {
+    if (!this.isLightboxOpen) return;
+    if (event.key === 'Escape') this.closeLightbox();
+    if (event.key === 'ArrowRight') this.nextLightbox();
+    if (event.key === 'ArrowLeft') this.prevLightbox();
   }
 }

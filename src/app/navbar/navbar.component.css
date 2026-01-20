@@ -4,3 +4,13 @@
     text-align: center;
     font-size: large;
 }
+
+.nav-link {
+    transition: color 0.3s ease;
+}
+
+
+.active-tab {
+    color: #fd2401 !important;
+    font-weight: bold;    
+}

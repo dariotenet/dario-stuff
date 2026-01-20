@@ -3,9 +3,8 @@
         <h3 class="proyecto-title">Logo Writer</h3>
         <div class="proyecto">
             <div class="proyecto-image">
-                <button (click)="prevImage('logoIndex', logo)">‹</button>
-                <img [src]="logo[logoIndex]" alt="imagen del carrusel">
-                <button (click)="nextImage('logoIndex', logo)">›</button>
+                <img [src]="logo[0]" alt="imagen del carrusel" 
+                     (click)="openLightbox(logo, 0)">
             </div>
             <div class="barcode">
                 <span>Lenguaje Ensamblador</span>
@@ -18,9 +17,8 @@
         <h3 class="proyecto-title">Retro Ritmo</h3>
         <div class="proyecto">
             <div class="proyecto-image">
-                <button (click)="prevImage('retroIndex', retro)">‹</button>
-                <img [src]="retro[retroIndex]" alt="imagen del carrusel">
-                <button (click)="nextImage('retroIndex', retro)">›</button>
+                <img [src]="retro[0]" alt="imagen del carrusel"
+                     (click)="openLightbox(retro, 0)">
             </div>
             <div class="barcode">
                 <span>Programación III</span>
@@ -33,9 +31,8 @@
         <h3 class="proyecto-title">Packet Sniffer</h3>
         <div class="proyecto">
             <div class="proyecto-image">
-                <button (click)="prevImage('psIndex', ps)">‹</button>
-                <img [src]="ps[psIndex]" alt="imagen del carrusel">
-                <button (click)="nextImage('psIndex', ps)">›</button>
+                <img [src]="ps[0]" alt="imagen del carrusel"
+                     (click)="openLightbox(ps, 0)">
             </div>
             <div class="barcode">
                 <span>Redes de Computadoras I</span>
@@ -48,9 +45,8 @@
         <h3 class="proyecto-title">JoJo's Game</h3>
         <div class="proyecto">
             <div class="proyecto-image">
-                <button (click)="prevImage('jojoIndex', jojo)">‹</button>
-                <img [src]="jojo[jojoIndex]" alt="imagen del carrusel">
-                <button (click)="nextImage('jojoIndex', jojo)">›</button>
+                <img [src]="jojo[0]" alt="imagen del carrusel"
+                     (click)="openLightbox(jojo, 0)">
             </div>
             <div class="barcode">
                 <span>Tecnologías Web<br><a href="https://jbagame.netlify.app/">Jugar</a></span>
@@ -63,9 +59,8 @@
         <h3 class="proyecto-title">Gorilla Gym</h3>
         <div class="proyecto">
             <div class="proyecto-image">
-                <button (click)="prevImage('gorillaIndex', gorilla)">‹</button>
-                <img [src]="gorilla[gorillaIndex]" alt="imagen del carrusel">
-                <button (click)="nextImage('gorillaIndex', gorilla)">›</button>
+                <img [src]="gorilla[0]" alt="imagen del carrusel"
+                     (click)="openLightbox(gorilla, 0)">
             </div>
             <div class="barcode">
                 <span>Tecnologías Web<br><a href="https://gorillas-gym.web.app/">Ver</a></span>
@@ -73,4 +68,37 @@
             </div>
         </div>
     </div>
+
+    <div class="proyecto-card">
+        <h3 class="proyecto-title">Bingo</h3>
+        <div class="proyecto">
+            <div class="proyecto-image">
+                <img [src]="bin[0]" alt="imagen del carrusel"
+                     (click)="openLightbox(bin, 0)">
+            </div>
+            <div class="barcode">
+                <span>Programación de Dispositivos Móviles<br><a href="https://drive.google.com/file/d/1kNgUk2NjRzIfNKJhJZuPXiQmw2HfnElI/view?usp=sharing">.apk</a></span>
+                <span>Android/Java<br>2025</span>
+            </div>
+        </div>
+    </div>
 </div>
+
+@if (isLightboxOpen) {
+    <div class="lightbox-overlay">
+    
+        <button class="lb-btn lb-close" (click)="closeLightbox()">&times;</button>
+
+     <button class="lb-btn lb-prev" (click)="prevLightbox()">&#10094;</button>
+
+        <div class="lightbox-content" (click)="$event.stopPropagation()">
+            <img [src]="activeArray[activeIndex]" alt="Imagen completa">
+        </div>
+
+        <button class="lb-btn lb-next" (click)="nextLightbox()">&#10095;</button>
+
+        <div class="lb-counter">
+            {{ activeIndex + 1 }} / {{ activeArray.length }}
+        </div>
+    </div>
+}
