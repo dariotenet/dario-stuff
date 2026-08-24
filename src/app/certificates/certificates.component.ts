@@ -37,6 +37,18 @@ export class CertificatesComponent {
       emisor: 'Cisco Networking Academy',
       fecha: '2025',
       archivo: 'assets/certificados/cisco-packet-tracer.pdf'
+    },
+    {
+      titulo: 'Automated Testing NextGen',
+      emisor: 'EPAM Campus',
+      fecha: '2026',
+      archivo: 'assets/certificados/Dario Moreno.pdf' 
+    },
+    {
+      titulo: 'Community Talk: Economía Agéntica',
+      emisor: 'WayLearn Technologies',
+      fecha: '2026',
+      archivo: 'assets/certificados/Dario Miguel Moreno González.pdf' 
     }
   ];
 }
