@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-certificados',
+  selector: 'app-certificates',
   imports: [],
-  templateUrl: './certificados.component.html',
-  styleUrl: './certificados.component.css'
+  templateUrl: './certificates.component.html',
+  styleUrl: './certificates.component.css'
 })
-export class CertificadosComponent {
+export class CertificatesComponent {
   certificados = [
     {
       titulo: 'AWS Academy Graduate - Cloud Foundations',

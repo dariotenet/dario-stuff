@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-sobremi',
+  selector: 'app-likes',
   imports: [],
-  templateUrl: './sobremi.component.html',
-  styleUrl: './sobremi.component.css'
+  templateUrl: './likes.component.html',
+  styleUrl: './likes.component.css'
 })
-export class SobremiComponent {
+export class LikesComponent {
   peliculas: string[] = [
     'assets/pelis/1.jpg',
     'assets/pelis/2.jpg',

@@ -1,12 +1,12 @@
 import { Component, HostListener } from '@angular/core';
 
 @Component({
-  selector: 'app-proyectos',
+  selector: 'app-projects',
   imports: [],
-  templateUrl: './proyectos.component.html',
-  styleUrl: './proyectos.component.css'
+  templateUrl: './projects.component.html',
+  styleUrl: './projects.component.css'
 })
-export class ProyectosComponent {
+export class ProjectsComponent {
   logo: string[] = [
     'assets/pro/logo2.png', 'assets/pro/logo.png'
   ];
